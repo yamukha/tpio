@@ -21,7 +21,7 @@
 
 typedef struct {
    std::string body;      // responce body
-   uint32_t code;         // http responce code 200, 404, 500 etc.
+   int32_t code;         // http responce code 200, 404, 500 etc.
 } RpcResult;
 
 class RobonomicsRpc { 
