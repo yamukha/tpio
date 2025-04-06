@@ -80,7 +80,11 @@ void setup() {
       uint8_t url_eeprom_crc  = epprom_data[1];
   
       Serial.println("EPPROM URL size: " + String(url_eeprom_size) + " CRC: " + String(url_eeprom_crc));
-  
+
+    if (url_eeprom_crc == 0 && url_eeprom_size == 32) {
+     robonomics_url = URLRPC;
+     Serial.println("Set URL to: " + String(robonomics_url.c_str()));
+    } else {
       char tmp_data[url_eeprom_size];
       uint8_t j = 0;
       for (int i = url_eeprom_offset; i <= url_eeprom_size + url_eeprom_offset; i++, j++) {
@@ -98,6 +102,7 @@ void setup() {
       } else {
           Serial.println("Wrong CRC for url!");
       }
+    }      
   }
 
   if (!use_eeprom_args || new_eeprom_args) {
@@ -131,7 +136,7 @@ void setup() {
       use_eeprom_args = true;
       robonomics_url = urlRPC.c_str();
   }
- 
+
   WiFi.begin(STASSID, STAPSK);
   Serial.printf ("Trying to connected to SSID: %s \n", STASSID);
   while (WiFi.status() != WL_CONNECTED) {
