@@ -16,7 +16,7 @@
     "license": "MIT",
     "homepage": "https://github.com/yamukha",
     "dependencies": {
-      "arduino-libraries/Arduino_JSON": "0.2.0"
+      "arduino-libraries/Arduino_JSON": "0.2.0",
       "rweather/Crypto": "0.4.0"
     },
     "export": {
